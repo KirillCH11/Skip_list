@@ -1,2 +1,87 @@
-# Skip_list
-Realisation the skip list structure
+# Lab work 2
+## Author
+Чуркин Кирилл Алексеевич; 24.Б81-мм
+## Contacts
+st129364@student.spbu.ru
+
+# Skip List Container
+
+A C++17 implementation of a skip list container with STL-style interface.
+
+## Features
+
+- **STL-compatible** API design
+- **O(log n)** average complexity for search/insert/delete
+- Custom **comparators** and **allocators** support
+- **Move-aware** operations
+- Comprehensive **unit tests**
+- Minimal dependencies
+
+## Quick Start
+
+```cpp
+#include "skip_list.h"
+#include <iostream>
+
+int main() {
+    skip_list<int> sl = {5, 2, 7, 1, 3};
+    
+    // Insert elements
+    sl.insert(4);
+    
+    // Iterate in order
+    for (int x : sl) {
+        std::cout << x << " "; // 1 2 3 4 5 7
+    }
+    
+    // Find elements
+    if (sl.find(3) != sl.end()) {
+        std::cout << "\nFound 3!";
+    }
+    
+    // Erase elements
+    sl.erase(5);
+    
+    return 0;
+}
+```
+
+## Building & Testing
+
+### Requirements
+- C++17 compiler (GCC 7+/Clang 5+/MSVC 19.20+)
+- GNU Make
+- Google Test (development headers)
+
+### Using Makefile
+
+```bash
+# Build tests
+make
+
+# Run all tests
+make test
+
+# Clean build artifacts
+make clean
+
+# Format code (requires clang-format)
+make format
+```
+
+## API Highlights
+
+| Operation          | Method                      | Complexity  |
+|--------------------|-----------------------------|-------------|
+| Insert element     | `insert(const T&)`          | O(log n)    |
+| Remove element     | `erase(const T&)`           | O(log n)    |
+| Find element       | `find(const T&)`            | O(log n)    |
+| Check size         | `size()`                    | O(1)        |
+| Iterate elements   | `begin()`, `end()`          | O(n)        |
+
+## CI Integration
+
+Preconfigured GitHub Actions workflow (`ci.yml`) tests:
+- Linux
+- GCC/Clang
+- C++17/C++20 standards
